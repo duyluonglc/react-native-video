@@ -13,6 +13,8 @@
 		641E284E1F0EECF100443AF6 /* RCTVideoPlayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 31CAFB2E1CADC77F009BCF6F /* RCTVideoPlayerViewController.m */; };
 		641E284F1F0EECF100443AF6 /* RCTVideoManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BBD49E3C1AC8DEF000610F8E /* RCTVideoManager.m */; };
 		641E28501F0EECF100443AF6 /* UIView+FindUIViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 31CAFB201CADA8CD009BCF6F /* UIView+FindUIViewController.m */; };
+		68FD2E2F1FCE6AD9006693AB /* NYT360Video.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 68FD2E2E1FCE6AD6006693AB /* NYT360Video.framework */; };
+		68FD2E301FCE6B05006693AB /* NYT360Video.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 68FD2E2E1FCE6AD6006693AB /* NYT360Video.framework */; };
 		BBD49E3F1AC8DEF000610F8E /* RCTVideo.m in Sources */ = {isa = PBXBuildFile; fileRef = BBD49E3A1AC8DEF000610F8E /* RCTVideo.m */; };
 		BBD49E401AC8DEF000610F8E /* RCTVideoManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BBD49E3C1AC8DEF000610F8E /* RCTVideoManager.m */; };
 /* End PBXBuildFile section */
@@ -46,6 +48,7 @@
 		31CAFB2E1CADC77F009BCF6F /* RCTVideoPlayerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RCTVideoPlayerViewController.m; sourceTree = "<group>"; };
 		31CAFB301CAE6B5F009BCF6F /* RCTVideoPlayerViewControllerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RCTVideoPlayerViewControllerDelegate.h; sourceTree = "<group>"; };
 		641E28441F0EEC8500443AF6 /* libRCTVideo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libRCTVideo.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		68FD2E2E1FCE6AD6006693AB /* NYT360Video.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = NYT360Video.framework; sourceTree = "<group>"; };
 		BBD49E391AC8DEF000610F8E /* RCTVideo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RCTVideo.h; sourceTree = "<group>"; };
 		BBD49E3A1AC8DEF000610F8E /* RCTVideo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RCTVideo.m; sourceTree = "<group>"; };
 		BBD49E3B1AC8DEF000610F8E /* RCTVideoManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RCTVideoManager.h; sourceTree = "<group>"; };
@@ -57,6 +60,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				68FD2E2F1FCE6AD9006693AB /* NYT360Video.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -64,6 +68,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				68FD2E301FCE6B05006693AB /* NYT360Video.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -92,7 +97,16 @@
 				31CAFB201CADA8CD009BCF6F /* UIView+FindUIViewController.m */,
 				134814211AA4EA7D00B7C361 /* Products */,
 				641E28441F0EEC8500443AF6 /* libRCTVideo.a */,
+				68FD2DBB1FCDCE39006693AB /* Frameworks */,
 			);
+			sourceTree = "<group>";
+		};
+		68FD2DBB1FCDCE39006693AB /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				68FD2E2E1FCE6AD6006693AB /* NYT360Video.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -272,6 +286,11 @@
 		58B511F01A9E6C8500147676 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Libs",
+					"$(PROJECT_DIR)",
+				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
@@ -286,6 +305,11 @@
 		58B511F11A9E6C8500147676 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Libs",
+					"$(PROJECT_DIR)",
+				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
@@ -306,6 +330,11 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Libs",
+					"$(PROJECT_DIR)",
+				);
 				GCC_NO_COMMON_BLOCKS = YES;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = RCTVideo;
@@ -325,6 +354,11 @@
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Libs",
+					"$(PROJECT_DIR)",
+				);
 				GCC_NO_COMMON_BLOCKS = YES;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = RCTVideo;
@@ -362,6 +396,7 @@
 				641E284B1F0EEC8500443AF6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

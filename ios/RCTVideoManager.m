@@ -55,7 +55,7 @@ RCT_EXPORT_VIEW_PROPERTY(onPlaybackRateChange, RCTBubblingEventBlock);
 - (NSDictionary *)constantsToExport
 {
   return @{
-    @"ScaleNone": AVLayerVideoGravityResizeAspect,
+    @"ScaleNone": @"",
     @"ScaleToFill": AVLayerVideoGravityResize,
     @"ScaleAspectFit": AVLayerVideoGravityResizeAspect,
     @"ScaleAspectFill": AVLayerVideoGravityResizeAspectFill

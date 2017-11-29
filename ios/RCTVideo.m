@@ -3,6 +3,7 @@
 #import <React/RCTBridgeModule.h>
 #import <React/RCTEventDispatcher.h>
 #import <React/UIView+React.h>
+#import <NYT360Video/NYT360Video.h>
 
 static NSString *const statusKeyPath = @"status";
 static NSString *const playbackLikelyToKeepUpKeyPath = @"playbackLikelyToKeepUp";
@@ -20,6 +21,7 @@ static NSString *const timedMetadata = @"timedMetadata";
   AVPlayerLayer *_playerLayer;
   AVPlayerViewController *_playerViewController;
   NSURL *_videoURL;
+  NYT360ViewController *_nyt360VC;
 
   /* Required to publish events */
   RCTEventDispatcher *_eventDispatcher;
@@ -83,6 +85,17 @@ static NSString *const timedMetadata = @"timedMetadata";
                                              selector:@selector(applicationWillEnterForeground:)
                                                  name:UIApplicationWillEnterForegroundNotification
                                                object:nil];
+    
+    _player = [[AVPlayer alloc] init];
+    
+    // Create a NYT360ViewController with the AVPlayer and our app's motion manager:
+    id<NYT360MotionManagement> const manager = [NYT360MotionManager sharedManager];
+    _nyt360VC = [[NYT360ViewController alloc] initWithAVPlayer:_player motionManager:manager];
+    
+    // Embed the player view controller in our UI, via view controller containment:
+    [self.inputViewController addChildViewController:_nyt360VC];
+    [self addSubview:_nyt360VC.view];
+    [_nyt360VC didMoveToParentViewController:self.inputViewController];
   }
 
   return self;
@@ -280,7 +293,8 @@ static NSString *const timedMetadata = @"timedMetadata";
     _playbackRateObserverRegistered = NO;
   }
 
-  _player = [AVPlayer playerWithPlayerItem:_playerItem];
+//  _player = [AVPlayer playerWithPlayerItem:_playerItem];
+  [_player replaceCurrentItemWithPlayerItem:_playerItem];
   _player.actionAtItemEnd = AVPlayerActionAtItemEndNone;
 
   [_player addObserver:self forKeyPath:playbackRate options:0 context:nil];
@@ -676,30 +690,31 @@ static NSString *const timedMetadata = @"timedMetadata";
 {
     if( _player )
     {
-        _playerViewController = [self createPlayerViewController:_player withPlayerItem:_playerItem];
+//        _playerViewController = [self createPlayerViewController:_player withPlayerItem:_playerItem];
         // to prevent video from being animated when resizeMode is 'cover'
         // resize mode must be set before subview is added
-        [self setResizeMode:_resizeMode];
-        [self addSubview:_playerViewController.view];
+//        [self setResizeMode:_resizeMode];
+//        [self addSubview:_playerViewController.view];
+//        [self addSubview:_nyt360VC.view];
     }
 }
 
 - (void)usePlayerLayer
 {
-    if( _player )
-    {
-      _playerLayer = [AVPlayerLayer playerLayerWithPlayer:_player];
-      _playerLayer.frame = self.bounds;
-      _playerLayer.needsDisplayOnBoundsChange = YES;
-
-      // to prevent video from being animated when resizeMode is 'cover'
-      // resize mode must be set before layer is added
-      [self setResizeMode:_resizeMode];
-      [_playerLayer addObserver:self forKeyPath:readyForDisplayKeyPath options:NSKeyValueObservingOptionNew context:nil];
-
-      [self.layer addSublayer:_playerLayer];
-      self.layer.needsDisplayOnBoundsChange = YES;
-    }
+//    if( _player )
+//    {
+//      _playerLayer = [AVPlayerLayer playerLayerWithPlayer:_player];
+//      _playerLayer.frame = self.bounds;
+//      _playerLayer.needsDisplayOnBoundsChange = YES;
+//
+//      // to prevent video from being animated when resizeMode is 'cover'
+//      // resize mode must be set before layer is added
+//      [self setResizeMode:_resizeMode];
+//      [_playerLayer addObserver:self forKeyPath:readyForDisplayKeyPath options:NSKeyValueObservingOptionNew context:nil];
+//
+//      [self.layer addSublayer:_playerLayer];
+//      self.layer.needsDisplayOnBoundsChange = YES;
+//    }
 }
 
 - (void)setControls:(BOOL)controls
