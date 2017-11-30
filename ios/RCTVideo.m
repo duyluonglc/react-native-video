@@ -827,6 +827,9 @@ static NSString *const timedMetadata = @"timedMetadata";
       _playerLayer.frame = self.bounds;
       [CATransaction commit];
   }
+  float rootViewWidth = self.frame.size.width;
+  float rootViewHeight = self.frame.size.height;
+  [_nyt360VC.view setFrame:CGRectMake(0, 0, rootViewWidth, rootViewHeight)];
 }
 
 #pragma mark - Lifecycle

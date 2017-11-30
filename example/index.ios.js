@@ -38,10 +38,9 @@ class VideoPlayer extends Component {
       <View style={styles.container}>
         <View style={styles.videoContainer}>
           <Video
-            source={{ uri: 'https://bitmovin.com/player-content/playhouse-vr/progressive.mp4' }}
+            source={require('./London.mp4')}
             style={{
-              width: 300,
-              height: 400
+              flex: 1
             }}
             rate={1.0}
             paused={this.state.paused}
